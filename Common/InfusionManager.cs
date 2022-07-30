@@ -450,7 +450,7 @@ namespace WeaponEnchantments.Common
                     if (iGlobal.statModifiers.ContainsKey("damage")) {
                         iGlobal.statModifiers["damage"] = new StatModifier(1f, damageMultiplier);//This is being hit.  It's never supposed to be.  Just a precaution.
 
-                        $"Updated the infusion damage multiplier again for item: {item.S()}.  This shouldn't ever happen".LogNT();
+                        //$"Updated the infusion damage multiplier again for item: {item.S()}.  This shouldn't ever happen".LogNT();
                     }
                     else {
                         iGlobal.statModifiers.Add("damage", new StatModifier(1f, damageMultiplier));
