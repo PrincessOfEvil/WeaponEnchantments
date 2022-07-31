@@ -37,6 +37,7 @@ namespace WeaponEnchantments.Common.Globals
         static bool war = false;
         static float warReduction = 1f;
 
+
         #endregion
 
         private Item _sourceItem;
@@ -82,15 +83,14 @@ namespace WeaponEnchantments.Common.Globals
                 "The Slime God",//Calamity
                 "Trojan Squirrel",//Fargo's
                 "Deviantt",//Fargo's
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "The Storm Cloud",//Vitality
+                "Gemstone Elemental",//Vitality
+                "The Grand Antlion",//Vitality
+                "Moonlight Dragonfly",//Vitality
+                "Polar Exterminator",//Querty's Bosses and Items 2
+                "The Divine Light",//Querty's Bosses and Items 2
+                "Ancient Machine",//Querty's Bosses and Items 2
+                "Noehtnap",//Querty's Bosses and Items 2
             };
 
             multipleSegmentBossTypes = new Dictionary<int, float>() {
@@ -257,9 +257,6 @@ namespace WeaponEnchantments.Common.Globals
                     break;
                 case NPCID.LunarTowerStardust when !bossBag:
 
-                    break;
-                default:
-                    itemTypes.Add(ItemID.None);
                     break;
             }
 
@@ -964,7 +961,8 @@ namespace WeaponEnchantments.Common.Globals
                         //Player hp less than max
                         if (heal > 0 && player.lifeSteal > 0f) {
                             //Vanilla lifesteal mitigation
-                            player.lifeSteal -= heal;
+                            int vanillaLifeStealValue = (int)Math.Round(heal * AffectOnVanillaLifeStealLimmit);
+                            player.lifeSteal -= vanillaLifeStealValue;
 
                             Vector2 speed = new Vector2(0, 0);
                             Projectile.NewProjectile(SourceItem.GetSource_ItemUse(SourceItem), npc.Center, speed, ProjectileID.VampireHeal, 0, 0f, player.whoAmI, player.whoAmI, heal);
@@ -1216,6 +1214,13 @@ namespace WeaponEnchantments.Common.Globals
                 Main.npc[npcWhoAmI].StrikeNPC(damage, 0, 0, crit, false, true);
         }
         public override void OnSpawn(NPC npc, IEntitySource source) {
+            if (npc.ModNPC != null) {
+                string n = npc.FullName;
+                string n2 = npc.ModNPC.Name;
+                string n3 = npc.GivenName;
+                float v = npc.value;
+                int l = npc.lifeMax;
+            }
             if (!war || npc.friendly || npc.townNPC || npc.boss)
                 return;
 
