@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Terraria.ID;
+using WeaponEnchantments.Common;
 
 namespace WeaponEnchantments.Items.Enchantments
 {
